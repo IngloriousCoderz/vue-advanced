@@ -1,8 +1,8 @@
 <script>
-import AppHeader from './AppHeader.vue'
-import AppForm from './AppForm.vue'
-import AppList from './AppList.vue'
 import AppFilters from './AppFilters.vue'
+import AppForm from './AppForm.vue'
+import AppHeader from './AppHeader.vue'
+import AppList from './AppList.vue'
 
 export default {
   components: { AppHeader, AppForm, AppList, AppFilters },

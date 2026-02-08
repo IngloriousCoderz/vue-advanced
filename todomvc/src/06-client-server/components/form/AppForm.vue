@@ -1,8 +1,8 @@
 <script setup>
 import { storeToRefs } from 'pinia'
 
-import { useFormStore } from './form'
 import { useListStore } from '../list/list'
+import { useFormStore } from './form'
 
 const form = useFormStore()
 const { text } = storeToRefs(form)

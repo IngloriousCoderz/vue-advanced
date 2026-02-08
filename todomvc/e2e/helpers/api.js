@@ -32,7 +32,7 @@ export async function mockTasksApi(page, initialTasks = []) {
 
     // ---- PUT /tasks/:id ----
     if (method === 'PUT') {
-      debugger
+      
       const id = request.url().split('/').pop()
       const body = JSON.parse(request.postData() || '{}')
 
@@ -49,7 +49,7 @@ export async function mockTasksApi(page, initialTasks = []) {
 
     // ---- PATCH /tasks/:id ----
     if (method === 'PATCH') {
-      debugger
+      
       const id = request.url().split('/').pop()
       const body = JSON.parse(request.postData() || '{}')
 

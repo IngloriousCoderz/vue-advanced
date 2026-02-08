@@ -1,6 +1,6 @@
 // tests/stores/formStore.test.js
-import { describe, it, expect, beforeEach } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
+import { beforeEach,describe, expect, it } from 'vitest'
 
 import { useFormStore } from './form'
 

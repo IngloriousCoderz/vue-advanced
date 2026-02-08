@@ -1,6 +1,6 @@
 <script setup>
-import { useList } from './list'
 import { useFilters } from '../filters/filters'
+import { useList } from './list'
 
 const { toggle, remove } = useList()
 const { filteredTasks } = useFilters()

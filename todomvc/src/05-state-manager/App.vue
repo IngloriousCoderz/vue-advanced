@@ -1,10 +1,10 @@
 <script setup>
-import AppHeader from './header/AppHeader.vue'
-import AppForm from './form/AppForm.vue'
-import AppList from './list/AppList.vue'
-import AppFilters from './filters/AppFilters.vue'
-
 import { onMounted, onUpdated } from 'vue'
+
+import AppFilters from './filters/AppFilters.vue'
+import AppForm from './form/AppForm.vue'
+import AppHeader from './header/AppHeader.vue'
+import AppList from './list/AppList.vue'
 
 onMounted(() => {
   console.log('App mounted!')

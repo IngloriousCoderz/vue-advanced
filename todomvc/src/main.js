@@ -1,5 +1,5 @@
-import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { createApp } from 'vue'
 
 import App from './00-single-component/App.vue'
 // import App from './01-multi-component/App.vue'

@@ -1,15 +1,14 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-
 // Plugin per ottimizzazioni (da installare con npm/pnpm)
 import { visualizer } from 'rollup-plugin-visualizer' // Bundle analysis
-import viteCompression from 'vite-plugin-compression' // Gzip/Brotli compression
-import { VitePWA } from 'vite-plugin-pwa' // Progressive Web App
+import { defineConfig } from 'vite'
 import { imagetools } from 'vite-imagetools' // Ottimizzazione immagini
+import viteCompression from 'vite-plugin-compression' // Gzip/Brotli compression
 import inspect from 'vite-plugin-inspect' // Ispezione trasformazioni Vite
+import { VitePWA } from 'vite-plugin-pwa' // Progressive Web App
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({

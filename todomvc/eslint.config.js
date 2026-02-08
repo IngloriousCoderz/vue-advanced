@@ -1,11 +1,12 @@
-import { defineConfig, globalIgnores } from 'eslint/config'
-import globals from 'globals'
 import js from '@eslint/js'
-import pluginVue from 'eslint-plugin-vue'
-import pluginPlaywright from 'eslint-plugin-playwright'
 import pluginVitest from '@vitest/eslint-plugin'
-import pluginOxlint from 'eslint-plugin-oxlint'
+import { defineConfig, globalIgnores } from 'eslint/config'
 import skipFormatting from 'eslint-config-prettier/flat'
+import pluginOxlint from 'eslint-plugin-oxlint'
+import pluginPlaywright from 'eslint-plugin-playwright'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import pluginVue from 'eslint-plugin-vue'
+import globals from 'globals'
 
 export default defineConfig([
   {
@@ -39,4 +40,12 @@ export default defineConfig([
   ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 
   skipFormatting,
+
+  {
+    plugins: { 'simple-import-sort': simpleImportSort },
+    rules: {
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+    },
+  },
 ])
