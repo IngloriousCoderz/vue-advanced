@@ -2,7 +2,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import federation from '@originjs/vite-plugin-federation'
+import { federation } from '@module-federation/vite'
 
 export default defineConfig({
   plugins: [
@@ -12,26 +12,29 @@ export default defineConfig({
 
       // Configura i microfrontend remoti
       remotes: {
-        todomvc: 'http://localhost:5174/assets/remoteEntry.js', // URL del remote
+        todomvc: {
+          type: 'module',
+          name: 'todomvc',
+          entry: 'http://localhost:5174/remoteEntry.js', // URL del remote
+          entryGlobalName: 'todomvc',
+          shareScope: 'default',
+        },
       },
 
+      filename: 'remoteEntry.js',
+
       // Stesse dipendenze condivise
-      shared: {
-        vue: {
-          singleton: true,
-          requiredVersion: '^3.5.0',
-        },
-        'vue-router': {
-          singleton: true,
-          requiredVersion: '^5.0.1',
-        },
-        pinia: {
-          singleton: true,
-          requiredVersion: '^3.0.4',
-        },
-      },
+      shared: ['vue', 'vue-router', 'pinia'],
+
+      dts: false, // Il dynamic-remote-type-hints-plugin tenta di aprire una connessione WebSocket per aggiornare le definizioni TypeScript nell'IDE mentre scrivi codice nel Remote
+      dev: true,
     }),
   ],
+
+  server: {
+    origin: 'http://localhost:5173',
+    port: 5173,
+  },
 
   build: {
     target: 'esnext',
@@ -41,9 +44,5 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-  },
-
-  server: {
-    port: 5173,
   },
 })

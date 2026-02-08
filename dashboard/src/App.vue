@@ -2,12 +2,7 @@
 import { defineAsyncComponent } from 'vue'
 
 // Carica il componente TodoMVC dal remote
-const TodoApp = defineAsyncComponent(() => import('todomvc/TodoApp'))
-
-// Gestione errori di caricamento
-const onError = (error) => {
-  console.error('Errore caricamento microfrontend:', error)
-}
+const TodoApp = defineAsyncComponent(() => import('todomvc/todo-app'))
 </script>
 
 <template>

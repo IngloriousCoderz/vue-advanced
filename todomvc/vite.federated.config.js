@@ -2,7 +2,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import federation from '@originjs/vite-plugin-federation'
+import { federation } from '@module-federation/vite'
 
 export default defineConfig({
   plugins: [
@@ -13,27 +13,28 @@ export default defineConfig({
 
       // Esponi i componenti che vuoi rendere disponibili
       exposes: {
-        './TodoApp': './src/05-state-manager/App.vue', // Componente principale
-        // './TodoHeader': './src/05-state-manager/AppHeader.vue', // Esempio: componente specifico
+        './todo-app': './src/05-state-manager/App.vue', // Componente principale
+        // './todo-header': './src/05-state-manager/AppHeader.vue', // Esempio: componente specifico
       },
 
       // Condividi dipendenze con l'host per evitare duplicazioni
-      shared: {
-        vue: {
-          singleton: true,
-          requiredVersion: '^3.5.0',
-        },
-        'vue-router': {
-          singleton: true,
-          requiredVersion: '^5.0.1',
-        },
-        pinia: {
-          singleton: true,
-          requiredVersion: '^3.0.4',
-        },
-      },
+      shared: ['vue', 'vue-router', 'pinia'],
+
+      dts: false, // Il dynamic-remote-type-hints-plugin tenta di aprire una connessione WebSocket per aggiornare le definizioni TypeScript nell'IDE mentre scrivi codice nel Remote
+      dev: true,
     }),
   ],
+
+  // Server dev su porta diversa dall'host
+  server: {
+    port: 5174,
+    cors: true, // Importante per permettere caricamento cross-origin
+  },
+
+  preview: {
+    port: 5174,
+    cors: true,
+  },
 
   // Importante: build in library mode per module federation
   build: {
@@ -46,16 +47,5 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-  },
-
-  // Server dev su porta diversa dall'host
-  server: {
-    port: 5174,
-    cors: true, // Importante per permettere caricamento cross-origin
-  },
-
-  preview: {
-    port: 5174,
-    cors: true,
   },
 })

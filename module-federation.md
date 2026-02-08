@@ -1,3 +1,5 @@
+# Module Federation
+
 Quando usare Module Federation?
 
 ✅ Ha senso quando:
@@ -18,3 +20,13 @@ Alternative più semplici:
 - Monorepo con workspace - team separati, build unico
 - npm packages privati - pubblica componenti come librerie
 - Web Components - più standard, meno vendor lock-in
+
+```bash
+cd todomvc
+pnpm dev --config vite.config.federated.js
+```
+
+```bash
+cd dashboard
+pnpm dev
+```
