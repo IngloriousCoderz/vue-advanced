@@ -1,13 +1,9 @@
 <script setup>
-import { storeToRefs } from 'pinia'
-import { useListStore } from './stores/list'
-import { useFiltersStore } from './stores/filters'
+import { useList } from './list'
+import { useFilters } from '../filters/filters'
 
-const list = useListStore()
-const { toggle, remove } = list
-
-const filters = useFiltersStore()
-const { filteredTasks } = storeToRefs(filters)
+const { toggle, remove } = useList()
+const { filteredTasks } = useFilters()
 </script>
 
 <template>

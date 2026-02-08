@@ -1,7 +1,7 @@
+import { computed, ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 
-import { computed, ref } from 'vue'
-import { useListStore } from './list'
+import { useListStore } from '../list/list'
 
 export const useFiltersStore = defineStore('filters', () => {
   const list = useListStore()
@@ -26,9 +26,9 @@ export const useFiltersStore = defineStore('filters', () => {
 
   const isClearCompletedShown = computed(() => completedTasks.value.length)
 
-  async function clearCompleted() {
+  function clearCompleted() {
     for (const task of completedTasks.value) {
-      await remove(tasks.value.indexOf(task))
+      remove(tasks.value.indexOf(task))
     }
     selectedFilter.value = 'All'
   }

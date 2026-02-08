@@ -1,13 +1,9 @@
 <script setup>
-import { useListStore } from './stores/list'
-import { useFormStore } from './stores/form'
-import { storeToRefs } from 'pinia'
+import { useForm } from '../form/form'
+import { useList } from '../list/list'
 
-const form = useFormStore()
-const { text } = storeToRefs(form)
-const { empty } = form
-
-const { add } = useListStore()
+const { text, empty } = useForm()
+const { add } = useList()
 
 function handleSubmit() {
   add(text.value)

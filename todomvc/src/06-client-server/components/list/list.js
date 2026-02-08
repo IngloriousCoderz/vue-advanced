@@ -1,6 +1,7 @@
 import { ref, onMounted } from 'vue'
 import { defineStore } from 'pinia'
-import * as api from '../services/api'
+
+import * as api from '../../services/api'
 
 export const useListStore = defineStore('list', () => {
   const tasks = ref([])

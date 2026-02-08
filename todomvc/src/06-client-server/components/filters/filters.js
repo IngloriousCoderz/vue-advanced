@@ -1,7 +1,7 @@
+import { computed, ref } from 'vue'
 import { defineStore, storeToRefs } from 'pinia'
 
-import { computed, ref } from 'vue'
-import { useListStore } from './list'
+import { useListStore } from '../list/list'
 
 export const useFiltersStore = defineStore('filters', () => {
   const list = useListStore()

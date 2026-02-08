@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { auth } from './interceptors/auth'
 import { errors } from './interceptors/errors'
 

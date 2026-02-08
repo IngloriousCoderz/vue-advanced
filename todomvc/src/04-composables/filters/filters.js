@@ -1,5 +1,6 @@
 import { computed, ref } from 'vue'
-import { useList } from './list'
+
+import { useList } from '../list/list'
 
 // stateful composable: need to keep the ref outside of the composable so it is globally accessible
 const selectedFilter = ref('All')

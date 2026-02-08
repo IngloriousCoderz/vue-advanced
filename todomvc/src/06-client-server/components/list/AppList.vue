@@ -1,9 +1,14 @@
 <script setup>
-import { useList } from './composables/list'
-import { useFilters } from './composables/filters'
+import { storeToRefs } from 'pinia'
 
-const { toggle, remove } = useList()
-const { filteredTasks } = useFilters()
+import { useListStore } from './list'
+import { useFiltersStore } from '../filters/filters'
+
+const list = useListStore()
+const { toggle, remove } = list
+
+const filters = useFiltersStore()
+const { filteredTasks } = storeToRefs(filters)
 </script>
 
 <template>
