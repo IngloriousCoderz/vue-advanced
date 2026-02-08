@@ -5,8 +5,8 @@ export default {
 </script>
 
 <template>
-  <!-- WARNING: calling the event 'change' will trigger a DOM change event! -->
-  <form @submit.prevent="$emit('submit')">
+  <!-- WARNING: 'change' and 'submit' events will trigger real DOM events! -->
+  <form @submit.prevent="$emit('formSubmit')">
     <input
       type="text"
       placeholder="What next?"

@@ -95,7 +95,7 @@ export default {
 <template>
   <AppHeader name="Matteo Antony" />
 
-  <AppForm :text="text" @inputChange="handleChange" @submit="handleSubmit" />
+  <AppForm :text="text" @inputChange="handleChange" @formSubmit="handleSubmit" />
 
   <AppList :tasks="filteredTasks" @spanClick="toggle" @buttonClick="remove" />
 
