@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
-import { onMounted,ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 import * as api from '../../services/api'
 
 export const useListStore = defineStore('list', () => {
   const tasks = ref([])
 
-  onMounted(() => {
-    api.fetchTasks().then((t) => (tasks.value = t))
-  })
+  async function fetch() {
+    tasks.value = await api.fetchTasks()
+  }
 
   async function add(text) {
     const createdTask = await api.addTask(text)
@@ -32,5 +32,5 @@ export const useListStore = defineStore('list', () => {
     tasks.value.splice(index, 1)
   }
 
-  return { tasks, add, toggle, remove }
+  return { tasks, fetch, add, toggle, remove }
 })

@@ -1,14 +1,19 @@
 <script setup>
 import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 
 import { useFiltersStore } from '../filters/filters'
 import { useListStore } from './list'
 
 const list = useListStore()
-const { toggle, remove } = list
+const { fetch, toggle, remove } = list
 
 const filters = useFiltersStore()
 const { filteredTasks } = storeToRefs(filters)
+
+onMounted(() => {
+  fetch()
+})
 </script>
 
 <template>
