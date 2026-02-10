@@ -6,13 +6,13 @@
       "completed": true
     },
     {
-      "id": "2",
-      "text": "Look for a job",
-      "completed": false
-    },
-    {
       "id": "3",
       "text": "Forget everything"
+    },
+    {
+      "id": "ba21",
+      "text": "Ciao",
+      "completed": true
     }
   ]
 }

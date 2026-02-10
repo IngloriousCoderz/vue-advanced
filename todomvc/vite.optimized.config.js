@@ -6,6 +6,7 @@ import { visualizer } from 'rollup-plugin-visualizer' // Bundle analysis
 import { defineConfig } from 'vite'
 import { imagetools } from 'vite-imagetools' // Ottimizzazione immagini
 import viteCompression from 'vite-plugin-compression' // Gzip/Brotli compression
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import inspect from 'vite-plugin-inspect' // Ispezione trasformazioni Vite
 import { VitePWA } from 'vite-plugin-pwa' // Progressive Web App
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -34,7 +35,7 @@ export default defineConfig({
       deleteOriginFile: false, // Mantieni anche file originali
     }),
 
-    // Opzionale: anche gzip per compatibilità con server più vecchi
+    // Opzionale:  gzip per anchecompatibilità con server più vecchi
     viteCompression({
       algorithm: 'gzip',
       ext: '.gz',
@@ -85,6 +86,8 @@ export default defineConfig({
 
     // Ispeziona trasformazioni Vite: vai a /__inspect/ in dev mode
     inspect(),
+
+    ViteImageOptimizer(),
   ],
 
   resolve: {
@@ -107,7 +110,7 @@ export default defineConfig({
   // Ottimizzazione dipendenze
   optimizeDeps: {
     // Pre-bundle esplicito di librerie pesanti per dev server più veloce
-    include: ['vue', 'vue-router', 'pinia'],
+    include: ['vue', 'vue-router', 'pinia', 'axios'],
     // Escludi pacchetti che sono già ESM e non necessitano pre-bundling
     exclude: ['@vueuse/core'], // esempio: VueUse è già ESM
   },
@@ -141,7 +144,7 @@ export default defineConfig({
         // Code splitting manuale: separa vendor da codice app
         manualChunks: {
           // Vendor chunk per librerie che cambiano raramente (migliore caching)
-          'vue-vendor': ['vue', 'vue-router', 'pinia'],
+          'vue-vendor': ['vue', 'vue-router', 'pinia', 'axios'],
           // Separa librerie UI pesanti
           // 'ui-library': ['element-plus'] // esempio
         },
