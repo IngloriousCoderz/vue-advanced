@@ -1,4 +1,4 @@
-import { expect,test } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 
 import { mockTasksApi } from './helpers/api'
 import { TodoPage } from './helpers/todo'

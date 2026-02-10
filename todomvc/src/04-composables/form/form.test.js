@@ -7,19 +7,21 @@ describe('useForm', () => {
 
   it('starts with empty text', async () => {
     const { useForm } = await import('./form')
-
     const { text } = useForm()
+
     expect(text.value).toBe('')
   })
 
   it('empties the text', async () => {
+    // given
     const { useForm } = await import('./form')
-
     const { text, empty } = useForm()
     text.value = 'Hello'
 
+    // when
     empty()
 
+    // then
     expect(text.value).toBe('')
   })
 })

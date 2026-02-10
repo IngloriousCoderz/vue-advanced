@@ -9,6 +9,7 @@ export default defineConfig({
     vue(),
     federation({
       name: 'dashboard',
+      filename: 'remoteEntry.js',
 
       // Configura i microfrontend remoti
       remotes: {
@@ -20,8 +21,6 @@ export default defineConfig({
           shareScope: 'default',
         },
       },
-
-      filename: 'remoteEntry.js',
 
       // Stesse dipendenze condivise
       shared: ['vue', 'vue-router', 'pinia'],
